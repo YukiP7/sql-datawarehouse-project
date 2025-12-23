@@ -12,7 +12,7 @@ SELECT TOP 1000 * FROM bronze.erp_px_cat_g1v2;
 IF OBJECT_ID ('silver.crm_cust_info','U') IS NOT NULL 
 	DROP TABLE silver.crm_cust_info ;
 CREATE TABLE silver.crm_cust_info(
-	cst_id INT ,
+	cst_id VARCHAR(50),
 	cst_key VARCHAR(50),
 	cst_firstname VARCHAR(50),
 	cst_lastname VARCHAR(50),
@@ -42,9 +42,9 @@ CREATE TABLE silver.crm_sales_details(
 	sls_order_num VARCHAR(50) ,
 	sls_prd_key VARCHAR(50),
 	sls_cst_id INT,
-	sls_order_dt INT,
-	sls_ship_dt INT,
-	sls_due_dt INT,
+	sls_order_dt DATE,
+	sls_ship_dt DATE,
+	sls_due_dt DATE,
 	sls_sales INT,
 	sls_quantity INT,
 	sls_price INT ,
@@ -77,3 +77,5 @@ CREATE TABLE silver.erp_px_cat_g1v2(
 	maintenance VARCHAR(50),
 	dwh_create_date DATETIME2 DEFAULT GETDATE() 
 );
+
+EXEC silver.load_silver;
